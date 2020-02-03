@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form class="form-signin" action="#" th:action="@{/logincheck}" method="POST">
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+<h2 class="form-signin-heading"> Sign in</h2>
+<label for="inputEmail" class="sr-only">Username</label>
+<input type="text"  class="form-control" placeholder="Username" name="username" id="Username" />
+<label for="inputPassword" class="sr-only">Password</label>
+<input type="password"  class="form-control" placeholder="Password" name="password" id="password" />
+<input type="submit" value="submit">
+<div th:if="${error!=null}" class="alert alert-dander" role="alert"> Invalid username or password</div>
+<div th:if="${logout!=null}" class="alert alert-dander" role="alert"> logout successfully</div>
+<button class="btm btn-lg btn-priary btn-block" type="submit">
+	<span class="glyphicon flyphicon-log-in" aria-hidden="true"></span> Sign in
+</button>
+</form>
+</body>
+</html>

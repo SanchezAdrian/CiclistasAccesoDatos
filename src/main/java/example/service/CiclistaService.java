@@ -2,10 +2,15 @@ package example.service;
 
 import java.util.List;
 
-import example.model.ciclista;
+
+import example.entity.Ciclista;
+import example.model.CiclistaModel;
 
 public interface CiclistaService {
 	
-	public abstract List<ciclista> getListciclista();
+	public abstract List<CiclistaModel> getListciclista();
+	public abstract Ciclista addCiclista(CiclistaModel ciclistaModel);
+	public abstract int removeCiclista(int id);
+	public abstract Ciclista updateCiclista(CiclistaModel ciclistaModel);
 
 }

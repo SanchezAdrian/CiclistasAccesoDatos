@@ -27,6 +27,6 @@ public class LoginController {
 	{
 		LOG.info("METHOD: loginCheck()");
 		LOG.info("Returning to contact view");
-		return "redirect:/contacts/showcontacts";
+		return "redirect:/ciclistas/listaCiclistas";
 	}
 }

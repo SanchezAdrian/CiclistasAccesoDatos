@@ -3,6 +3,8 @@ package example.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,7 +24,9 @@ public class Ciclista {
 	@Column(name="edad")
 	private int edad;
 	
-	@Column(name="nomeq")
+	
+	@ManyToOne
+	@JoinColumn(name="nomeq")
 	private String nomeq;
 
 	public Ciclista(int dorsal, String nombre, String foto, int edad, String nomeq) {

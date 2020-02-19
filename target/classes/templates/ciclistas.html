@@ -1,12 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Ciclistas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="../css/shards.min.css"> -->
 </head>
+
 <body>
-<form class="form-signin" action="#" th:action="@{/logincheck}" method="POST">
-<label> Ciclistas </label>
-</form>
+    
+        <div class="card ">
+            <div class="card-body  bg-dark text-white">
+                <div th:switch="${ciclista}" class="container lg-5  bg-dark text-white">
+                    <p class="my-6">
+                        <a th:href="@{/ciclistas/create}" class="btn btn-primary"><i
+       class="fas fa-user-plus ml-4"> Añadir Ciclista</i></a>
+                    </p>
+                    <div class="col-md-10">
+                        <h2 th:case="null">No hay ciclistas</h2>
+                        <div th:case="*">
+                            <table class="table table-striped table-responsive-md">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Dorsal</th>
+                                        <th>Foto</th>
+                                        <th>Nombre del equipo</th>
+                                        <th>Edad</th>
+                                        <th>Editar</th>
+                                        <th>Borrar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="ciclista : ${ciclistas}">
+                                        <td th:text="${ciclista.nombre}"></td>
+                                        <td th:text="${ciclista.dorsal}"></td>
+                                        <td th:text="${ciclista.foto}"></td>
+                                        <td th:text="${ciclista.nomeq}"></td>
+                                        <td th:text="${ciclista.edad}"></td>
+                                        <td><a th:href="@{/ciclistas/edit/{id}(id=${ciclista.dorsal})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
+                                        <td><a th:href="@{/ciclistas/delete/{id}(id=${ciclista.dorsal})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+  
 </body>
+
 </html>

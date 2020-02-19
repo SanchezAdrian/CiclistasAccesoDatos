@@ -35,13 +35,13 @@ public class CiclistaServiceImpl implements CiclistaService {
 
 	@Override
 	public Ciclista addCiclista(CiclistaModel ciclistaModel) {
-		// TODO Auto-generated method stub
-		return null;
+		Ciclista ciclista=ciclistaConverter.model2entity(ciclistaModel);
+		return ciclistaJpaRepository.save(ciclista);
 	}
 
 	@Override
 	public int removeCiclista(int id) {
-		// TODO Auto-generated method stub
+		ciclistaJpaRepository.deleteById(id);
 		return 0;
 	}
 

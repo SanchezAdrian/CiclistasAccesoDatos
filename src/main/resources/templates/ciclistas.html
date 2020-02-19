@@ -12,13 +12,13 @@
 </head>
 
 <body>
-    <div class="container my-2">
-        <div class="card">
-            <div class="card-body">
-                <div th:switch="${ciclista}" class="container my-5">
-                    <p class="my-5">
-                        <a href="/ciclistas/addCiclistas" class="btn btn-primary"><i
-       class="fas fa-user-plus ml-2"> Añadir Ciclista</i></a>
+    
+        <div class="card ">
+            <div class="card-body  bg-dark text-white">
+                <div th:switch="${ciclista}" class="container lg-5  bg-dark text-white">
+                    <p class="my-6">
+                        <a th:href="@{/ciclistas/create}" class="btn btn-primary"><i
+       class="fas fa-user-plus ml-4"> Añadir Ciclista</i></a>
                     </p>
                     <div class="col-md-10">
                         <h2 th:case="null">No hay ciclistas</h2>
@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-    </div>
+  
 </body>
 
 </html>

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,7 +20,7 @@ import example.service.CiclistaService;
 public class CiclistaController {
 	
 	public static final String CICLISTAS_VIEW="ciclistas";
-	private static final String CREATE_VIEW="create";
+	// private static final String CREATE_VIEW="create";
 	
 	@Autowired
 	@Qualifier("ciclistaServiceImpl")
@@ -34,7 +35,7 @@ public class CiclistaController {
 	}
 	
 	
-	@PostMapping("/addCiclista")
+	@PostMapping("/add")
 	public String addCiclista(@ModelAttribute("ciclista") CiclistaModel ciclistaModel) {
 		ciclistaService.addCiclista(ciclistaModel);
 		return "redirect:/ciclistas/listaCiclistas";
@@ -42,12 +43,16 @@ public class CiclistaController {
 	
 	@GetMapping("/create")
 	public ModelAndView createCiclista() {
-		ModelAndView mav=new ModelAndView(CREATE_VIEW);
+		ModelAndView mav=new ModelAndView("CreateCiclistas");
 		mav.addObject("ciclista",new Ciclista());
 		return mav;
 	}
 	
-	
+	@RequestMapping(value="/ciclistas/delete/{id}")
+	public String deleteCiclista(@PathVariable("id") int id) {
+	    ciclistaService.removeCiclista(id);
+	    return "redirect:/ciclistas/listaCiclistas";
+	}
 	
 	
 

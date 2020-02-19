@@ -19,6 +19,7 @@ public class CiclistaConverter {
 		return ciclistaModel;
 		}
 		
+		//Model 2 Entity
 		public Ciclista model2entity(CiclistaModel ciclistaModel) {
 			Ciclista ciclista=new Ciclista();
 			ciclista.setNombre(ciclistaModel.getNombre());
